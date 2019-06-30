@@ -30,8 +30,6 @@ const fetchCocktailsError = (): CocktailsActionTypes => ({
   type: FETCH_COCKTAILS_ERROR,
 });
 
-
-
 export const getCocktailsByName = (
   name: string
 ): ThunkAction<Promise<void>, {}, {}, AnyAction> => async dispatch => {
@@ -45,6 +43,6 @@ export const getCocktailsByName = (
     dispatch(fetchCocktailsSuccess(filtered as Cocktail[]));
   } catch (e) {
     console.error(e);
-    fetchCocktailsError();
+    dispatch(fetchCocktailsError());
   }
 };

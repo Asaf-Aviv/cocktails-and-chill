@@ -43,6 +43,6 @@ export const getIngredients = (
     dispatch(fetchIngredientsSuccess(ingredients));
   } catch (e) {
     console.error(e);
-    fetchIngredientsError();
+    dispatch(fetchIngredientsError());
   }
 };

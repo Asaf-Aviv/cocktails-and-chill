@@ -34,6 +34,6 @@ export const getRandomCocktails = (): ThunkAction<Promise<void>, {}, {}, AnyActi
       dispatch(fetchRandomCocktailsSuccess(filtered as Cocktail[]));
     } catch (e) {
       console.error(e);
-      fetchRandomCocktailsError();
+      dispatch(fetchRandomCocktailsError());
     }
   };
