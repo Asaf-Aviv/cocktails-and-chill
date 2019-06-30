@@ -4,24 +4,24 @@ import { connect } from 'react-redux';
 import { AppState } from './store';
 import { CocktailsState } from './store/cocktails/types';
 import { getCocktailsByName } from './store/cocktails/actions';
-import { getRandomCocktails } from './store/randomCocktails/actions';
+import { fetchRandomCocktails } from './store/randomCocktails/actions';
 
 interface AppProps {
   drinks: CocktailsState;
   getCocktailsByName: (name: string) => void;
-  getRandomCocktails: () => void;
+  fetchRandomCocktails: () => void;
 }
 
 const App: React.FC<AppProps> = ({
   drinks,
   getCocktailsByName,
-  getRandomCocktails,
+  fetchRandomCocktails,
 }) => {
   const [name, setName] = useState('');
 
   useEffect(() => {
-    getRandomCocktails();
-  }, []);
+    fetchRandomCocktails();
+  }, [fetchRandomCocktails]);
 
   const getCocktails = () => {
     getCocktailsByName(name);
@@ -47,6 +47,7 @@ const App: React.FC<AppProps> = ({
       >
         Search
       </button>
+      <button type="button" onClick={fetchRandomCocktails}>Random</button>
       <header className="App-header">
         <h1>How About a Drink ?</h1>
       </header>
@@ -58,6 +59,7 @@ const mapStateToProps = (state: AppState) => ({
   drinks: state.drinks,
 });
 
-export default connect(mapStateToProps,{
-  getCocktailsByName, getRandomCocktails,
+export default connect(mapStateToProps, {
+  getCocktailsByName,
+  fetchRandomCocktails,
 })(hot(App));

@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import cocktailFetcher from '../../axios';
-import { getIngredients } from '../ingredients/actions';
+import { fetchIngredients } from '../ingredients/actions';
 import { removeFalsyProps } from '../../utils/index';
 import {
   Cocktail,
@@ -38,9 +38,9 @@ export const getCocktailsByName = (
   try {
     const { data: { drinks } }: CocktailsResponse = await cocktailFetcher(`search.php?s=${name}`);
     const ingredients = [...new Set(drinks.map(d => d.strIngredient1))];
-    dispatch(getIngredients(ingredients));
-    const filtered = removeFalsyProps(drinks);
-    dispatch(fetchCocktailsSuccess(filtered as Cocktail[]));
+    dispatch(fetchIngredients(ingredients));
+    const filtered = removeFalsyProps(drinks) as Cocktail[];
+    dispatch(fetchCocktailsSuccess(filtered));
   } catch (e) {
     console.error(e);
     dispatch(fetchCocktailsError());

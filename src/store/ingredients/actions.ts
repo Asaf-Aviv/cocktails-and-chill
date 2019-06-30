@@ -32,7 +32,7 @@ const fetchIngredientsError = (): IngredientsActionTypes => ({
   type: FETCH_INGREDIENT_ERROR,
 });
 
-export const getIngredients = (
+export const fetchIngredients = (
   ingredientNames: string[]
 ): ThunkAction<Promise<void>, {}, {}, AnyAction> => async dispatch => {
   dispatch(fetchIngredientsPending());
