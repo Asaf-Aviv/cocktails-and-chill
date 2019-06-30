@@ -61,6 +61,8 @@ module.exports = {
       'error',
       'consistent'
     ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'key-spacing': ['error', {
       beforeColon: false
     }],
