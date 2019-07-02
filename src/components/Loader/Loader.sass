@@ -1,0 +1,44 @@
+.loader
+  position: absolute
+  top: 50px
+  animation: rotate-in-center 1.7s cubic-bezier(0.56, 0.27, 0.21, 0.71) infinite both
+  width: 64px
+  height: 64px
+
+@keyframes rotate-in-center
+  0%
+    opacity: 0.2
+    transform: rotate(0) scale(0)
+  20%
+    transform: rotate(0) scale(1)
+  30%
+    opacity: 1
+    transform: rotate(0)
+  35%
+    transform: rotate(15deg)
+  40%
+    transform: rotate(14deg)
+  45%
+    transform: rotate(-13deg)
+  50%
+    transform: rotate(12deg)
+  55%
+    transform: rotate(-11deg)
+  60%
+    transform: rotate(10deg)
+  65%
+    transform: rotate(-9deg)
+  70%
+    transform: rotate(8deg)
+  75%
+    transform: rotate(-7deg)
+  85%
+    opacity: 1
+    transform: rotate(7deg) scale(1)
+  90%
+    transform: rotate(7deg) scale(0.7)
+  95%
+    transform: rotate(-7deg) scale(0.4)
+  100%
+    opacity: 0.2
+    transform: rotate(7deg) scale(0)
