@@ -1,8 +1,7 @@
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { CocktailsResponse } from '../cocktails/actions';
+import { Cocktail } from '../../interfaces/Cocktail';
 import cocktailFetcher from '../../axios';
-import { Cocktail } from '../cocktails/types';
 import { removeFalsyProps } from '../../utils';
 import {
   FETCH_RANDOM_COCKTAILS,
@@ -10,10 +9,6 @@ import {
   FETCH_RANDOM_COCKTAILS_ERROR,
   RandomCocktailsActionTypes,
 } from './types';
-
-const fetchCocktail = (): Promise<Cocktail> =>
-  cocktailFetcher('random.php')
-    .then(({ data }: CocktailsResponse) => data.drinks[0]);
 
 const fetchRandomCocktailsPending = (): RandomCocktailsActionTypes => ({
   type: FETCH_RANDOM_COCKTAILS,
@@ -29,15 +24,15 @@ const fetchRandomCocktailsError = (): RandomCocktailsActionTypes => ({
 });
 
 export const fetchRandomCocktails = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
-  async dispatch => {
+  async (dispatch) => {
     dispatch(fetchRandomCocktailsPending());
 
     try {
-      const drinks = await Promise.all([...Array(3)].map(fetchCocktail));
+      const drinks = await cocktailFetcher.fetchRandomCocktails(3);
       const filtered = removeFalsyProps(drinks) as Cocktail[];
       dispatch(fetchRandomCocktailsSuccess(filtered));
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      console.error(err);
       dispatch(fetchRandomCocktailsError());
     }
   };

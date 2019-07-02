@@ -19,7 +19,7 @@ export default (
   switch (action.type) {
     case FETCH_COCKTAILS:
       return {
-        ...state,
+        cocktails: [],
         loading: true,
         error: false,
       };

@@ -1,10 +1,5 @@
-import { LoadingStates } from "../../interfaces/loadingState";
-
-export interface Ingredient {
-  idIngredient: string;
-  strIngredient: string;
-  strDescription: string;
-}
+import { LoadingStates } from '../../interfaces/LoadingState';
+import { Ingredient } from '../../interfaces/Ingredient';
 
 export interface IngredientsState extends LoadingStates {
   ingredients: Ingredient[];

@@ -6,7 +6,7 @@ import {
   FETCH_INGREDIENT_ERROR,
 } from './types';
 
-const initialState: IngredientsState ={
+const initialState: IngredientsState = {
   ingredients: [],
   loading: false,
   error: false,

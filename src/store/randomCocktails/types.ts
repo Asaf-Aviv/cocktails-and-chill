@@ -1,5 +1,5 @@
-import { LoadingStates } from '../../interfaces/loadingState';
-import { Cocktail } from '../cocktails/types';
+import { Cocktail } from '../../interfaces/Cocktail';
+import { LoadingStates } from '../../interfaces/LoadingState';
 
 export interface RandomCocktailsState extends LoadingStates {
   cocktails: Cocktail[];
