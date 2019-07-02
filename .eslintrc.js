@@ -46,15 +46,19 @@ module.exports = {
     'comma-dangle': [
       'error', 
       'always-multiline',
-      {
-        functions: 'always-multiline'
-      }
     ],
     'object-curly-spacing': ['error', 'always'],
     'max-len': ['error', 100],
     'semi': ['error', 'always'],
     'no-trailing-spaces': 'error',
     'import/order': 'error',
+    'trailing-comma': [
+      true,
+      {
+        'multiline': 'always',
+        'singleline': 'never',
+      },
+    ],
     'react/button-has-type': 'error',
     'react/jsx-closing-bracket-location': 'error',
     'function-paren-newline': [
@@ -66,8 +70,27 @@ module.exports = {
     'key-spacing': ['error', {
       beforeColon: false
     }],
+    'react/jsx-tag-spacing': 'error',
+    'no-multi-spaces': 'error',
     'react/jsx-one-expression-per-line': ['error', { allow: 'single-child'}],
     'react/jsx-max-props-per-line': ['error', {maximum: 1, when: 'multiline'}],
+    'arrow-spacing': 'error',
+    'comma-spacing': 'error',
+    'keyword-spacing': 'error',
+    'space-in-parens': 'error',
+    'arrow-body-style': 'error',
+    'space-infix-ops': 'error',
+    'react/jsx-wrap-multilines': [
+      'error',
+      {
+        declaration: 'parens-new-line'
+      }
+    ],
+    'semi-style': 'error',
+    'quotes': ['error', 'single'],
+    'import/no-useless-path-segments': 'error',
+    'arrow-parens': ['error', 'as-needed', { 'requireForBlockBody': true }],
+    'import/newline-after-import': 'error',
     '@typescript-eslint/type-annotation-spacing': ['error', {
       before: false,
       after: true,
@@ -83,7 +106,7 @@ module.exports = {
       }
     }]
   },
-  extends:  [
+  extends: [
     // 'airbnb',
     'plugin:import/errors',
     'plugin:import/warnings',
