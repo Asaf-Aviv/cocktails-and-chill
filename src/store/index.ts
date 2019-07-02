@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import cocktailsReducer from './cocktails/reducers';
 import randomCocktailsReducer from './randomCocktails/reducers';
 import ingredientReducer from './ingredients/reducers';
+import generalReducer from './general/reducers';
 
 const rootReducer = combineReducers({
   drinks: cocktailsReducer,
   randomCocktails: randomCocktailsReducer,
-  ingredient: ingredientReducer,
+  ingredients: ingredientReducer,
+  general: generalReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
