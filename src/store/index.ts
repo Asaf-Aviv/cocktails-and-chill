@@ -6,12 +6,14 @@ import cocktailsReducer from './cocktails/reducers';
 import randomCocktailsReducer from './randomCocktails/reducers';
 import ingredientReducer from './ingredients/reducers';
 import generalReducer from './general/reducers';
+import cacheReducer from './cache/reducers';
 
 const rootReducer = combineReducers({
   drinks: cocktailsReducer,
   randomCocktails: randomCocktailsReducer,
   ingredients: ingredientReducer,
   general: generalReducer,
+  cache: cacheReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
