@@ -3,6 +3,8 @@ import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { ShortCocktailSummary } from '../../interfaces/Cocktail';
 
+import './CocktailCard.sass';
+
 const { Meta } = Card;
 
 const CocktailCard: React.FC<ShortCocktailSummary> = ({
@@ -16,7 +18,13 @@ const CocktailCard: React.FC<ShortCocktailSummary> = ({
         hoverable={true}
         size="small"
         bodyStyle={{ padding: 12 }}
-        cover={<img className="cocktail-card__img" alt={strDrink} src={strDrinkThumb} />}
+        cover={
+          <img
+            className="cocktail-card__img"
+            alt={strDrink}
+            src={strDrinkThumb}
+          />
+        }
       >
         <Meta title={strDrink} />
       </Card>

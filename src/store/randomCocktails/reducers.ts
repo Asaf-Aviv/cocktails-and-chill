@@ -19,20 +19,19 @@ export default (
   switch (action.type) {
     case FETCH_RANDOM_COCKTAILS:
       return {
-        ...state,
+        cocktails: [],
         loading: true,
         error: false,
       };
     case FETCH_RANDOM_COCKTAILS_SUCCESS:
       return {
-        ...state,
         cocktails: action.cocktails,
         loading: false,
         error: false,
       };
     case FETCH_RANDOM_COCKTAILS_ERROR:
       return {
-        ...state,
+        cocktails: [],
         loading: false,
         error: true,
       };

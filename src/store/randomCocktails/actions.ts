@@ -28,7 +28,7 @@ export const fetchRandomCocktails = (): ThunkAction<Promise<void>, {}, {}, AnyAc
     dispatch(fetchRandomCocktailsPending());
 
     try {
-      const drinks = await cocktailFetcher.fetchRandomCocktails(3);
+      const drinks = await cocktailFetcher.fetchRandomCocktails();
       const filtered = removeFalsyProps(drinks) as Cocktail[];
       dispatch(fetchRandomCocktailsSuccess(filtered));
     } catch (err) {
