@@ -3,11 +3,13 @@ import {
   SET_GLASSES,
   GeneralState,
   GeneralActionTypes,
+  SET_INGREDIENTS,
 } from './types';
 
 const initialState: GeneralState = {
   categories: [],
   glasses: [],
+  ingredients: [],
 };
 
 export default (
@@ -24,6 +26,11 @@ export default (
       return {
         ...state,
         glasses: action.glasses,
+      };
+    case SET_INGREDIENTS:
+      return {
+        ...state,
+        ingredients: action.ingredients,
       };
     default:
       return state;
