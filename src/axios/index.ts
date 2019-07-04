@@ -19,13 +19,22 @@ class CocktailFetcher {
 
   public getAllCategories = (): Promise<string[]> =>
     this.fetcher('list.php?c=list')
-      .then(({ data }: CategoriesResponse) =>
+      .then(({ data }: AllCategoriesResponse) =>
         data.drinks.map(d => d.strCategory))
 
   public getAllGlasses = (): Promise<string[]> =>
     this.fetcher('list.php?g=list')
-      .then(({ data }: GlassesResponse) =>
+      .then(({ data }: AllGlassesResponse) =>
         data.drinks.map(d => d.strGlass))
+
+  public getAllIngredients = (): Promise<string[]> =>
+    this.fetcher('list.php?i=list')
+      .then(({ data }: AllIngredientsResponse) =>
+        data.drinks.map(d => d.strIngredient1))
+
+  public fetchCocktailById = (cocktailId: string): Promise<Cocktail> =>
+    this.fetcher(`lookup.php?i=${cocktailId}`)
+      .then(({ data }: CocktailByIdResponse) => data.drinks[0])
 
   public fetchCocktailsByName = (name: string): Promise<Cocktail[]> =>
     this.fetcher(`search.php?s=${name}`).then(this.extractDrinks)
@@ -33,7 +42,7 @@ class CocktailFetcher {
   public fetchIngredients = (ingredients: string[]): Promise<Ingredient[]> =>
     Promise.all(ingredients.map(this.fetchIngredient))
 
-  public fetchRandomCocktails = (amount: number): Promise<Cocktail[]> =>
+  public fetchRandomCocktails = (amount: number = 4): Promise<Cocktail[]> =>
     Promise.all([...Array(amount)].map(this.fetchRandomCocktail))
 
   public getCocktailsByAlcohol = (alcoholic: string): Promise<ShortCocktailSummary[]> =>
@@ -43,21 +52,33 @@ class CocktailFetcher {
     this.fetcher(`filter.php?i=${ingredient}`).then(this.extractDrinks)
 
   public getCocktailsByCategory = (category: string): Promise<ShortCocktailSummary[]> =>
-    this.fetcher(`filter.php?c=${category}`).then(this.extractDrinks)
+    this.fetcher(`filter.php?c=${category.replace(' ', '_')}`).then(this.extractDrinks)
 
   public getCocktailsByGlass = (glass: string): Promise<ShortCocktailSummary[]> =>
     this.fetcher(`filter.php?g=${glass}`).then(this.extractDrinks)
 }
 
-interface CategoriesResponse {
+interface AllCategoriesResponse {
   data: {
     drinks: [{ strCategory: string }];
   };
 }
 
-interface GlassesResponse {
+interface AllGlassesResponse {
   data: {
     drinks: [{ strGlass: string }];
+  };
+}
+
+interface AllIngredientsResponse {
+  data: {
+    drinks: [{ strIngredient1: string }];
+  };
+}
+
+interface CocktailByIdResponse {
+  data: {
+    drinks: Cocktail[];
   };
 }
 
