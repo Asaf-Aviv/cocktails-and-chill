@@ -1,0 +1,13 @@
+.cocktail-card
+  overflow: hidden
+  border-radius: 6px 
+  
+  .ant-card-hoverable
+    transition: box-shadow 0.7s cubic-bezier(0.88,-0.1, 0.25, 1)
+  .ant-card-cover
+    overflow: hidden
+  &__img
+    transition: transform 0.7s cubic-bezier(0.88,-0.1, 0.25, 1)
+  &:hover &
+    &__img
+      transform: scale(1.1) translate(0, 0)

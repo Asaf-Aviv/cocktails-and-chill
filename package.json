@@ -1,65 +1,29 @@
 {
-  "name": "youtube-manager",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.15",
-    "@types/lodash.identity": "^3.0.6",
-    "@types/lodash.mapvalues": "^4.6.6",
-    "@types/lodash.pickby": "^4.6.6",
-    "@types/node": "12.0.10",
-    "@types/react": "16.8.22",
-    "@types/react-dom": "16.8.4",
-    "@types/react-redux": "^7.1.1",
-    "@types/react-router-dom": "^4.3.4",
-    "@types/redux-logger": "^3.0.7",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
-    "@typescript-eslint/parser": "^1.11.0",
-    "antd": "^3.20.0",
-    "axios": "^0.19.0",
-    "lodash.identity": "^3.0.0",
-    "lodash.mapvalues": "^4.6.0",
-    "lodash.pickby": "^4.6.0",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.12.0",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "typescript": "3.5.2"
-  },
+  "name": "cocktails-n-chill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server/app/index.js",
+    "server": "nodemon server/app/index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
+    "build": "cd client && npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asaf-Aviv/cocktails-and-chill.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asaf-Aviv/cocktails-and-chill/issues"
   },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.14.2",
-    "redux-devtools": "^3.5.0"
+  "homepage": "https://github.com/Asaf-Aviv/cocktails-and-chill#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
   }
 }
