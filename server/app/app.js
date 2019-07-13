@@ -26,7 +26,7 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀  Shaking... on port ${PORT} 🍸🍹🍻`);
+  console.log(`🚀  Shaking on port ${PORT} 🍸🍹🍻`);
 });
 
 module.exports = app;

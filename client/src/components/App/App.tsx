@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Layout, BackTop, Icon } from 'antd';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SearchBar from '../SearchBar';
 import SideMenu from '../SideMenu';
@@ -30,18 +30,19 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Route component={() => { window.scrollTo(0, 0); return null; }} />
       <div className="App">
         <Layout style={{ minHeight: 'calc(100vh + 69px)' }}>
           {width >= 786 && <SideMenu />}
-          <Layout className="layout" style={{ marginLeft: width >= 786 ? 220 : 0 }}>
+          <Layout className="layout"style={{ marginLeft: width >= 786 ? 220 : 0 }}>
             <Header className="header">
               <NavBar />
             </Header>
-            <Content style={{ margin: '88px 12px 0' }}>
+            <Content style={{ margin: '88px 12px 0', paddingBottom: 24 }}>
               <SearchBar />
               <Routes />
             </Content>
-            <BackTop />
+            <BackTop style={{ right: 20, bottom: 20 }} />
             <Footer className="footer">
               Copyrights
               <Icon type="copyright" />

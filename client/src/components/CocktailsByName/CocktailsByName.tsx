@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { fetchCocktailsByName } from '../../store/cocktails/actions';
 import CocktailsList from '../CocktailsList';
@@ -16,7 +17,15 @@ const CocktailsByName: React.FC<RouteComponentProps<MatchParams>> = (props) => {
     dispatch(fetchCocktailsByName(name));
   }, [dispatch, props]);
 
-  return <CocktailsList />;
+  return (
+    <>
+      <Helmet>
+        <title>{`${props.match.params.name} Cocktails - Cocktails And Chill`}</title>
+        <meta name="description" content={`${props.match.params.name.toLowerCase()} Cocktails`} />
+      </Helmet>
+      <CocktailsList />
+    </>
+  );
 };
 
 export default CocktailsByName;

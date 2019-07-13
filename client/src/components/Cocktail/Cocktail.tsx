@@ -3,9 +3,11 @@ import { useDispatch } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Row, Col, Typography } from 'antd';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import useShallowEqualSelector from '../../hooks/useShallowEqualSelector';
 import { fetchCocktailById, clearCocktailById } from '../../store/cocktails/actions';
 import { CocktailsState } from '../../store/cocktails/types';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 interface MatchParams {
   cocktailId: string;
@@ -17,6 +19,7 @@ const Cocktail: React.FC<RouteComponentProps<MatchParams>> = (
   { match: { params: { cocktailId } } }
 ) => {
   const dispatch = useDispatch();
+  const width = useWindowWidth();
   const {
     cocktail,
     loadingCocktailById,
@@ -53,6 +56,14 @@ const Cocktail: React.FC<RouteComponentProps<MatchParams>> = (
 
   return (
     <>
+      <Helmet>
+        <title>{`${cocktail.strDrink} - Cocktails And Chill`}</title>
+        <meta name="description" content={`${cocktail.strDrink} Cocktails`} />
+        <meta
+          name={`how to make ${cocktail.strDrink}`}
+          content={cocktail.strInstructions}
+        />
+      </Helmet>
       <Title style={{ textAlign: 'center', marginBottom: '1em' }}>{cocktail.strDrink}</Title>
       <Row style={{ textAlign: 'center' }} gutter={12}>
         <Col style={{ fontWeight: 600 }} sm={24} md={12} lg={8} xl={6}>
@@ -79,7 +90,7 @@ const Cocktail: React.FC<RouteComponentProps<MatchParams>> = (
           </div>
         </Col>
         <Col style={{ fontWeight: 600 }} lg={16} xl={18}>
-          <Title level={2}>Ingredients</Title>
+          <Title style={{ marginBottom: '1em' }} level={2}>Ingredients</Title>
           <Row type="flex" justify="start" style={{ textAlign: 'center' }}>
             {ingredients.map((ingredient, i) => (
               <Col xs={12} md={8} lg={6} key={ingredient}>
@@ -97,10 +108,14 @@ const Cocktail: React.FC<RouteComponentProps<MatchParams>> = (
           </Row>
         </Col>
       </Row>
-      <Title level={2}>Instructions</Title>
-      {cocktail.strInstructions.split('.').map(inst => (
-        <Paragraph style={{ fontSize: 18 }} key={inst}>{inst + '.'}</Paragraph>
-      ))}
+      <div style={{ marginTop: 24, textAlign: width >= 768 ? 'left' : 'center' }}>
+        <Title style={{ marginBottom: '1em' }} level={2}>Instructions</Title>
+        {cocktail.strInstructions.split('.').map(inst => (
+          inst
+            ? <Paragraph style={{ fontSize: 18 }} key={inst}>{inst + '.'}</Paragraph>
+            : null
+        ))}
+      </div>
     </>
   );
 };

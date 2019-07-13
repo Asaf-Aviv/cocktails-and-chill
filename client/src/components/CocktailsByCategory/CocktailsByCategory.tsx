@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { fetchCocktailsByCategory } from '../../store/cocktails/actions';
 import CocktailsList from '../CocktailsList';
 import Breadcrumbs from '../Breadcrumbs';
@@ -25,6 +26,10 @@ const CocktailsByCategory: React.FC<RouteComponentProps<MatchParams>> = (
 
   return (
     <>
+      <Helmet>
+        <title>{`${category} Cocktails - Cocktails And Chill`}</title>
+        <meta name="description" content={`${category} Cocktails`} />
+      </Helmet>
       <Breadcrumbs routes={[...baseRoutes, { title: category }]} />
       <CocktailsList />
     </>

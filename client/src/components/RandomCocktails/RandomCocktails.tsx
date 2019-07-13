@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Row, Col } from 'antd';
+import { Helmet } from 'react-helmet';
 import { fetchRandomCocktails } from '../../store/randomCocktails/actions';
 import useShallowEqualSelector from '../../hooks/useShallowEqualSelector';
 import { RandomCocktailsState } from '../../store/randomCocktails/types';
@@ -38,12 +39,18 @@ const RandomCocktails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Random Cocktails - Cocktails And Chill</title>
+        <meta name="description" content="Random cocktails" />
+      </Helmet>
       <Button
         onClick={fetchCocktails}
+        type="primary"
+        className="shake-btn"
         style={{
           marginBottom: 24,
           display: 'block',
-          margin: '0 auto 24px',
+          margin: '0 auto 48px',
           height: 50,
           width: 150,
           textTransform: 'uppercase',

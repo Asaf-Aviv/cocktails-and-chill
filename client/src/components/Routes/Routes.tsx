@@ -17,14 +17,14 @@ const Routes: React.FC = () => (
     <Route exact path="/" component={Home} />
     <Route path="/categories" component={Categories} />
     <Route path="/glasses" component={Glasses} />
+    <Route path="/ingredients" component={Ingredients} />
+    <Route path="/random" component={RandomCocktails} />
     <Route path="/alcohol/:alcohol" component={CocktailsByAlcohol} />
     <Route path="/name/:name" component={CocktailsByName} />
     <Route path="/ingredient/:ingredient" component={CocktailsByIngredient} />
     <Route path="/category/:category*" component={CocktailsByCategory} />
     <Route path="/glass/:glass*" component={CocktailsByGlass} />
-    <Route path="/ingredients" component={Ingredients} />
     <Route path="/cocktail/:cocktailId" component={Cocktail} />
-    <Route path="/random" component={RandomCocktails} />
   </Switch>
 );
 

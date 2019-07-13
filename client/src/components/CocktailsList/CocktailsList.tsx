@@ -20,10 +20,13 @@ const renderCocktailCol = (cocktail: ShortCocktailSummary) => (
 );
 
 const CocktailsList: React.FC = () => {
-  const { drinks: { loading, error, cocktails } }: AppState = useShallowEqualSelector(state => state);
+  const {
+    drinks: { loading, error, cocktails },
+  }: AppState = useShallowEqualSelector(state => state);
 
   return (
     <Row
+      type="flex"
       gutter={12}
       style={{ position: 'relative', textAlign: 'center' }}
     >

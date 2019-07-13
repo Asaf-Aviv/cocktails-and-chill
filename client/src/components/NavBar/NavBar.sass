@@ -1,5 +1,5 @@
 .nav
-  width: 100%
+  flex: 1
   .ant-menu-horizontal > .ant-menu-item > a
     display: flex
     align-items: center
@@ -9,7 +9,18 @@
     display: flex
     justify-content: flex-end
 
-@media(max-width: 679px)
+.logo
+  display: inline-block
+  text-align: center
+  height: 64px
+  line-height: 64px
+  font-size: 16px
+  letter-spacing: 1px
+
+@media(max-width: 899px)
+  .logo
+    flex: 1
+
   .nav
     position: fixed
     top: 0

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import configureStore from './store';
 import App from './components/App/App';
+import 'intersection-observer';
 
 const store = configureStore();
 

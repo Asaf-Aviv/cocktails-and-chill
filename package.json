@@ -24,6 +24,8 @@
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "morgan": "^1.9.1"
+    "intersection-observer": "^0.7.0",
+    "morgan": "^1.9.1",
+    "react-intersection-observer": "^8.23.0"
   }
 }

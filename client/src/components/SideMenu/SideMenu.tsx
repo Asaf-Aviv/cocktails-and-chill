@@ -48,7 +48,6 @@ const SideMenu: React.FC = () => {
         paddingTop: 64,
       }}
     >
-      <div className="logo" />
       <Menu
         data-simplebar
         mode="inline"

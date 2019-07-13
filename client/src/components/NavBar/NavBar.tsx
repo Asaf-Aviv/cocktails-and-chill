@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Icon, Row, Button } from 'antd';
+import { Menu, Icon, Row, Button, Col, Typography } from 'antd';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { ReactComponent as GlassIcon } from '../../assets/icons/glass.svg';
 import { ReactComponent as LemonIcon } from '../../assets/icons/lemon.svg';
 import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg';
 import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg';
 import { ReactComponent as RandomIcon } from '../../assets/icons/random.svg';
+import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 import './NavBar.sass';
-import useWindowWidth from '../../hooks/useWindowWidth';
 
 interface MenuItem {
   to: string;
@@ -48,21 +49,28 @@ const NavBar: React.FC<RouteComponentProps> = (props) => {
 
   return (
     <>
-      {width < 680 && (
-        <Button
-          style={{ marginLeft: 16 }}
-          className="hamburger"
-          icon="menu"
-          onClick={() => setIsOpen(true)}
-        />
-      )}
-      <Row type="flex" justify="end">
+      <Row type="flex" align="middle" justify="end" style={{ flexWrap: 'nowrap' }}>
+        {width < 900 && (
+          <Button
+            style={{ marginLeft: 16 }}
+            className="hamburger"
+            icon="menu"
+            onClick={() => setIsOpen(true)}
+          />
+        )}
+        <Link to="/" className="logo">
+          <Icon
+            style={{ fontSize: 24, marginRight: 8 }}
+            component={LogoIcon as any}
+          />
+          Cocktails And Chill
+        </Link>
         <nav className={`nav ${isOpen ? 'nav--open' : ''}`}>
           <div className="nav__transparent-bg" onClick={() => setIsOpen(false)}>
             <Menu
               className="nav__menu"
               selectedKeys={[props.location.pathname]}
-              mode={width >= 680 ? 'horizontal' : 'vertical'}
+              mode={width >= 900 ? 'horizontal' : 'vertical'}
             >
               {links.map(renderMenuItem)}
             </Menu>

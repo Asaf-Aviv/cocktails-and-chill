@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
+import { Helmet } from 'react-helmet';
 import { fetchCocktailsByIngredient } from '../../store/cocktails/actions';
 import CocktailsList from '../CocktailsList';
 import IngredientsList from '../IngredientsList';
@@ -29,6 +30,10 @@ const CocktailsByIngredient: React.FC<RouteComponentProps<MatchParams>> = (
 
   return (
     <>
+      <Helmet>
+        <title>{`${ingredient} Cocktails - Cocktails And Chill`}</title>
+        <meta name="description" content={`${ingredient} Cocktails`} />
+      </Helmet>
       <Breadcrumbs routes={[...baseRoutes, { title: ingredient }]} />
       <Row type="flex" gutter={12} style={{ textAlign: 'center' }}>
         <Col order={2} xs={24} sm={12} md={14} lg={14} xl={18}>
