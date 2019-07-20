@@ -18,8 +18,6 @@ const CocktailsByAlcohol: React.FC<RouteComponentProps<MatchParams>> = (
     dispatch(fetchCocktailsByAlcoholFilter(alcohol));
   }, [alcohol, dispatch]);
 
-  console.log(alcohol);
-
   return (
     <>
       <Helmet>

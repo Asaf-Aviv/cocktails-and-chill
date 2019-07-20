@@ -30,10 +30,6 @@ const CocktailCard: React.FC<ShortCocktailSummary> = ({
     }
   }, [inView, strDrinkThumb]);
 
-  useEffect(() => {
-    console.log(isImageLoaded, inView);
-  });
-
   return (
     <div style={{ minHeight: 200, height: '100%' }} ref={ref}>
       {!inView || !isImageLoaded && <Loader />}

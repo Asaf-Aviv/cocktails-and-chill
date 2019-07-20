@@ -64,7 +64,6 @@ export const fetchCocktailById = (
   try {
     const cocktail = await cocktailFetcher.fetchCocktailById(cocltailId);
     if (!cocktail) {
-      console.log('not found');
       dispatch(fetchCocktailByIdSuccess(null));
       return;
     }
