@@ -9,7 +9,7 @@ import configureStore from './store';
 import App from './components/App/App';
 import 'intersection-observer';
 
-ReactGA.initialize('UA-142877210-3');
+ReactGA.initialize(process.env.REACT_APP_GA as string);
 
 const history = createHistory();
 
