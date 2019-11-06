@@ -4,12 +4,15 @@ import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import { Router } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
+import * as Sentry from '@sentry/browser';
 import './index.css';
 import configureStore from './store';
 import App from './components/App/App';
 import 'intersection-observer';
 
-ReactGA.initialize(process.env.REACT_APP_GA as string);
+// @ts-ignore
+ReactGA.initialize(process.env.REACT_APP_GA as string, { cookieDomain: 'auto' });
+Sentry.init({ dsn: 'https://c37a80cde17f463292c07592f2353107@sentry.io/1810396' });
 
 const history = createHistory();
 

@@ -20,17 +20,17 @@ export default (
     case SET_CATEGORIES:
       return {
         ...state,
-        categories: action.categories,
+        categories: action.categories.filter(Boolean),
       };
     case SET_GLASSES:
       return {
         ...state,
-        glasses: action.glasses,
+        glasses: action.glasses.filter(Boolean),
       };
     case SET_INGREDIENTS:
       return {
         ...state,
-        ingredients: action.ingredients,
+        ingredients: action.ingredients.filter(Boolean),
       };
     default:
       return state;

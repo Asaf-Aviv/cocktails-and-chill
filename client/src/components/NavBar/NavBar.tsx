@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Icon, Row, Button, Col, Typography } from 'antd';
+import { Menu, Icon, Row, Button } from 'antd';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { ReactComponent as GlassIcon } from '../../assets/icons/glass.svg';
 import { ReactComponent as LemonIcon } from '../../assets/icons/lemon.svg';

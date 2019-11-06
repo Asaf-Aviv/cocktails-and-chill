@@ -32,7 +32,7 @@ const CocktailCard: React.FC<ShortCocktailSummary> = ({
 
   return (
     <div style={{ minHeight: 200, height: '100%' }} ref={ref}>
-      {!inView || !isImageLoaded && <Loader />}
+      {(!inView || !isImageLoaded) && <Loader />}
       {inView && isImageLoaded && (
         <div className="cocktail-card">
           <Link to={`/cocktail/${idDrink}`}>
